@@ -1,25 +1,27 @@
-use crate::accidental::*;
+use crate::accidental::Accidental;
 use crate::pitch_class::letter::*;
-use crate::*;
+use crate::Octave;
 
 #[allow(unused)]
+#[derive(Debug)]
 pub struct Note {
     pitch_class: PitchClass,
-    octave: Octave,
     accidental: Accidental,
+    octave: Octave,
 }
 
 impl Note {
-    // Constructor
+    /// ## Constructor
+    /// Creates a new instance of note, given the `PitchClass`, `Accidental` and `Octave`.
     pub fn new(
         pitch_class: PitchClass,
+        accidental: Accidental,
         octave: Octave,
-        accidental: Accidental
     ) -> Note {
         Note {
             pitch_class,
-            octave,
             accidental,
+            octave,
         }
     }
 }

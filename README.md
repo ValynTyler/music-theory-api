@@ -1,0 +1,1 @@
+Second attempt at implementing a music theory API in Rust. This time more cleanly, concisely, and with no double digit note accidentals.

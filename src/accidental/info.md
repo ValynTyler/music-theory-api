@@ -1,1 +1,3 @@
 [https://en.wikipedia.org/wiki/Accidental_(music)]
+
+An accidental should be any integer (positive or not) that has the meaning that the note it affects should be altered (raised or lowered) by that amount of semitones. The classical examples of regular accidentals would be sharp(+1), flat(-1) and natural(0). Anything beyond that can be considered composite such as double sharp(+2) represented by ## or x, double flat(-2) represented by bb, while anything beyond that has to my knowledge no convetion arround its symbol. If microtonality is to be taken into account, an accidental could be instead registered as a real number.

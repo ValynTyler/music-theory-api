@@ -1,3 +1,11 @@
+use music_theory_api::pitch_class::letter::PitchClass;
+
 fn main() {
-    println!("{}", 0);
+
+
+
+    println!("{}", PitchClass::E.semitones() - PitchClass::D.semitones());
+
+
+
 }
