@@ -1,7 +1,15 @@
-pub mod letter;
-pub mod solfege;
+use crate::Semitones;
 
-use crate::pitch_class::letter::PitchClass;
+#[derive(Copy, Clone, Debug)]
+pub enum PitchClass {
+    C,
+    D,
+    E,
+    F,
+    G,
+    A,
+    B,
+}
 
 impl PitchClass {
     /// Returns the `PitchClass` succeeding `self`
@@ -47,5 +55,19 @@ impl PitchClass {
         }
         
         current
+    }
+
+    /// Returns the value of the given `PitchClass`
+    /// in `Semitones`. (The distance away from C)
+    pub fn semitones(&self) -> Semitones {
+        match self {
+            PitchClass::C => 0,
+            PitchClass::D => 2,
+            PitchClass::E => 4,
+            PitchClass::F => 5,
+            PitchClass::G => 7,
+            PitchClass::A => 9,
+            PitchClass::B => 11,
+        }
     }
 }

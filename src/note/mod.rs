@@ -1,5 +1,5 @@
 use crate::accidental::Accidental;
-use crate::pitch_class::letter::*;
+use crate::pitch_class::*;
 use crate::Octave;
 
 #[allow(unused)]
