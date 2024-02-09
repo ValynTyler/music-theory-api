@@ -1,6 +1,8 @@
+use core::fmt;
+
 use crate::Semitones;
 
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub enum PitchClass {
     C,
     D,
@@ -12,49 +14,40 @@ pub enum PitchClass {
 }
 
 impl PitchClass {
-    /// Returns the `PitchClass` succeeding `self`
+    /// Returns the `PitchClass` `idx`-1 positions above `self`
     /// (e.g: `G.next() -> A`)
-    pub fn next(&self) -> PitchClass {
-        match self {
-            Self::C => Self::D,
-            Self::D => Self::E,
-            Self::E => Self::F,
-            Self::F => Self::G,
-            Self::G => Self::A,
-            Self::A => Self::B,
-            Self::B => Self::C,
+    pub fn next(&self, idx: u8) -> PitchClass {
+        let mut pitch_class: PitchClass = *self;
+        for _ in 0..idx {
+            pitch_class = match pitch_class {
+                Self::C => Self::D,
+                Self::D => Self::E,
+                Self::E => Self::F,
+                Self::F => Self::G,
+                Self::G => Self::A,
+                Self::A => Self::B,
+                Self::B => Self::C,
+            }
         }
+        pitch_class
     }
 
-    /// Returns the `PitchClass` proceeding `self`
+    /// Returns the `PitchClass` `idx` positions below `self`
     /// (e.g: `G.next() -> F`)
-    pub fn prev(&self) -> PitchClass {
-        match self {
-            Self::C => Self::B,
-            Self::D => Self::C,
-            Self::E => Self::D,
-            Self::F => Self::E,
-            Self::G => Self::F,
-            Self::A => Self::G,
-            Self::B => Self::A,
+    pub fn prev(&self, idx: u8) -> PitchClass {
+        let mut pitch_class: PitchClass = *self;
+        for _ in 0..idx {
+            pitch_class = match pitch_class {
+                Self::C => Self::B,
+                Self::D => Self::C,
+                Self::E => Self::D,
+                Self::F => Self::E,
+                Self::G => Self::F,
+                Self::A => Self::G,
+                Self::B => Self::A,
+            }
         }
-    }
-
-    /// Returns the `PitchClass` that is `dist` positions above
-    /// (or below) it - depending on the sign
-    pub fn cycle(&self, mut dist: i8) -> PitchClass {
-        dist %= 7;
-
-        if dist < 0 {
-            dist = 7 + dist;
-        }
-
-        let mut current = *self;
-        for _ in 0..dist {
-            current = current.next();
-        }
-        
-        current
+        pitch_class
     }
 
     /// Returns the value of the given `PitchClass`
@@ -69,5 +62,23 @@ impl PitchClass {
             PitchClass::A => 9,
             PitchClass::B => 11,
         }
+    }
+}
+
+impl fmt::Display for PitchClass {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "{}",
+            match self {
+                PitchClass::C => "C",
+                PitchClass::D => "D",
+                PitchClass::E => "E",
+                PitchClass::F => "F",
+                PitchClass::G => "G",
+                PitchClass::A => "A",
+                PitchClass::B => "B",
+            }
+        )
     }
 }
