@@ -8,6 +8,16 @@ pub struct Interval {
 }
 
 impl Interval {
+    pub const MINOR_THIRD: Interval = Interval {
+        steps: 2,
+        semitones: 3,
+    };
+
+    pub const MAJOR_THIRD: Interval = Interval {
+        steps: 2,
+        semitones: 4,
+    };
+
     pub const PERFECT_FIFTH: Interval = Interval {
         steps: 4,
         semitones: 7,

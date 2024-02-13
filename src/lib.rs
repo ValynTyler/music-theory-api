@@ -1,8 +1,9 @@
-pub mod accidental;
-pub mod interval;
-pub mod note;
-pub mod octave;
 pub mod pitch_class;
+pub mod accidental;
+pub mod octave;
+pub mod note;
+pub mod interval;
+pub mod scale;
 
 type Semitones = i8;
 
