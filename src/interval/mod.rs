@@ -8,6 +8,16 @@ pub struct Interval {
 }
 
 impl Interval {
+    pub const MINOR_SECOND: Interval = Interval {
+        steps: 1,
+        semitones: 1,
+    };
+    
+    pub const MAJOR_SECOND: Interval = Interval {
+        steps: 1,
+        semitones: 2,
+    };
+
     pub const MINOR_THIRD: Interval = Interval {
         steps: 2,
         semitones: 3,
@@ -17,10 +27,40 @@ impl Interval {
         steps: 2,
         semitones: 4,
     };
+    
+    pub const PERFECT_FOURTH: Interval = Interval {
+        steps: 3,
+        semitones: 5,
+    };
 
     pub const PERFECT_FIFTH: Interval = Interval {
         steps: 4,
         semitones: 7,
+    };
+
+    pub const MINOR_SIXTH: Interval = Interval {
+        steps: 5,
+        semitones: 8,
+    };
+    
+    pub const MAJOR_SIXTH: Interval = Interval {
+        steps: 5,
+        semitones: 9,
+    };
+
+    pub const MINOR_SEVENTH: Interval = Interval {
+        steps: 6,
+        semitones: 10,
+    };
+    
+    pub const MAJOR_SEVENTH: Interval = Interval {
+        steps: 6,
+        semitones: 11,
+    };
+
+    pub const PERFECT_OCTAVE: Interval = Interval {
+        steps: 7,
+        semitones: 12,
     };
 
     pub fn new(steps: u8, semitones: Semitones) -> Interval {

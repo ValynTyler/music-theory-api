@@ -5,7 +5,7 @@ pub mod note;
 pub mod interval;
 pub mod scale;
 
-type Semitones = i8;
+pub type Semitones = i8;
 
 #[cfg(test)]
 mod tests {

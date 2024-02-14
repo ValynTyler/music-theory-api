@@ -62,6 +62,14 @@ impl Note {
         }
         *self
     }
+
+    pub fn to_sharp(&mut self) -> Note {
+        if self.accidental.is_flat() {
+            self.set_octave(self.octave - 1);
+            self.set_accidental(self.accidental + Accidental(12));   
+        }
+        *self
+    }
 }
 
 impl ops::Add<Interval> for Note {

@@ -26,3 +26,11 @@ impl ops::Add<i8> for Octave {
         Octave(self.0 + rhs)
     }
 }
+
+impl ops::Sub<i8> for Octave {
+    type Output = Octave;
+
+    fn sub(self, rhs: i8) -> Self::Output {
+        Octave(self.0 - rhs)
+    }
+}
