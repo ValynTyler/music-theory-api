@@ -33,6 +33,16 @@ impl Interval {
         semitones: 5,
     };
 
+    pub const AUGMENTED_FOURTH: Interval = Interval {
+        steps: 3,
+        semitones: 6,
+    };
+
+    pub const DIMINISHED_FIFTH: Interval = Interval {
+        steps: 4,
+        semitones: 6,
+    };
+
     pub const PERFECT_FIFTH: Interval = Interval {
         steps: 4,
         semitones: 7,
@@ -71,16 +81,16 @@ impl Interval {
         let mut note: Note = note;
         
         let delta = self.semitones;
-        let _start_semitones = note.semitones();
-        let _final_semitones = note.semitones() + delta;
+        let start_semitones = note.semitones();
+        let final_semitones = start_semitones + delta;
 
-        let octave = Octave(_final_semitones / 12);
+        let octave = Octave(final_semitones / 12);
         let pitch_class = match delta > 0 {
             true => note.pitch_class.next(self.steps),
             false => note.pitch_class.prev(self.steps),
         };
         let accidental = note.accidental + Accidental(
-            _final_semitones -
+            final_semitones -
             note.set_pitch_class(pitch_class)
                 .set_octave(octave)
                 .semitones()

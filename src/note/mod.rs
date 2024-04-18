@@ -32,6 +32,14 @@ impl Note {
         }
     }
 
+    pub const fn default() -> Note {
+        Note {
+            pitch_class: PitchClass::C,
+            accidental: Accidental(0),
+            octave: Octave(4),
+        }
+    }
+
     pub fn semitones(&self) -> Semitones {
         let pcl_semitones = self.pitch_class.semitones();
         let acc_semitones = self.accidental.semitones();
