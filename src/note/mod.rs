@@ -4,16 +4,11 @@ pub struct Note {
 }
 
 impl Note {
+    pub const MAX: Note = Note { pitch: 127 };
+    pub const MIN: Note = Note { pitch: 0 };
+
     pub fn pitch(&self) -> u8 {
         self.pitch % 128
-    }
-
-    pub fn min() -> Self {
-        Note { pitch: 0 }
-    }
-
-    pub fn max() -> Self {
-        Note { pitch: 127 }
     }
 }
 
