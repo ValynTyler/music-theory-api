@@ -1,11 +1,18 @@
 #[derive(Debug)]
 pub struct Note {
-    pub pitch: i8,
+    pub pitch: u8,
 }
 
 impl Note {
-    pub fn pitch(&self) -> i8 {
-        // to conform with MIDI, notes are constrained between 0 and 127
-        self.pitch.abs()
+    pub fn pitch(&self) -> u8 {
+        self.pitch % 128
+    }
+
+    pub fn min() -> Self {
+        Note { pitch: 0 }
+    }
+
+    pub fn max() -> Self {
+        Note { pitch: 127 }
     }
 }

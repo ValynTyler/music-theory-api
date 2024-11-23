@@ -1,5 +1,3 @@
-use music_theory_api::{note::Note, symbol::Symbol};
-
 fn main() {
-    println!("{:?}{}", Note::G, Symbol::Sharp);
+    println!("{} {}", 0x7f % 128, 0xff as u8 as i8);
 }
