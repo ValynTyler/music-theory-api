@@ -1,3 +1,5 @@
+use music_theory_api::pitch::Solfege;
+
 fn main() {
-    println!("{} {}", 0x7f % 128, 0xff as u8 as i8);
+    println!("{:?}", Solfege::Do);
 }
