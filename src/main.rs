@@ -67,19 +67,19 @@ impl Display for NoteSymbol {
     }
 }
 
-struct Note {
+struct RelativeNote {
     letter: NoteLetter,
     symbol: NoteSymbol,
 }
 
-impl Display for Note {
+impl Display for RelativeNote {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{:?}{}", self.letter, self.symbol)
     }
 }
 
 fn main() {
-    let note = Note {
+    let note = RelativeNote {
         letter: NoteLetter::G,
         symbol: NoteSymbol::Sharp(1.try_into().unwrap()),
     };
