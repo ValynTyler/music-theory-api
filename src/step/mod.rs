@@ -6,6 +6,26 @@
 #[derive(Debug)] pub struct NotNonZeroError;
 #[derive(Debug)] pub struct NotPositiveError;
 
+impl UStep {
+    const MAX: Self = Self(11);
+    const MIN: Self = Self(0);
+}
+
+impl IStep {
+    const MAX: Self = Self(11);
+    const MIN: Self = Self(-11);
+}
+
+impl UStepNonZero {
+    const MAX: Self = Self(11);
+    const MIN: Self = Self(0);
+}
+
+impl IStepNonZero {
+    const MAX: Self = Self(11);
+    const MIN: Self = Self(-11);
+}
+
 impl From::<u8> for UStep {
     fn from(value: u8) -> Self {
         Self(value % 12)
