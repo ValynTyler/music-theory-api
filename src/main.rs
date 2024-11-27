@@ -21,13 +21,14 @@ impl From<NoteLetter> for NotePitch {
 }
 
 struct NoteShift(u8);
+struct ZeroShiftError;
 
 impl TryFrom::<u8> for NoteShift {
-    type Error = String;
+    type Error = ZeroShiftError;
 
     fn try_from(value: u8) -> Result<Self, Self::Error> {
         match value % 12 {
-            0 => Err("Must pass non-null integer".to_owned()),
+            0 => Err(ZeroShiftError),
             _ => Ok(Self(value % 12))
         }
     }
