@@ -4,6 +4,7 @@ pub struct UStepNonZero(u8);
 pub struct IStepNonZero(i8);
 
 pub struct NotNonZeroError;
+pub struct NotPositiveError;
 
 impl From::<u8> for UStep {
     fn from(value: u8) -> Self {
@@ -37,6 +38,42 @@ impl TryFrom::<i8> for IStepNonZero {
         match value {
             0 => Err(NotNonZeroError),
             _ => Ok(IStepNonZero(value)),
+        }
+    }
+}
+
+impl From::<UStep> for IStep {
+    fn from(value: UStep) -> Self {
+        Self(value.0.try_into().unwrap());
+        todo!()
+    }
+}
+
+impl TryFrom::<IStep> for UStep {
+    type Error = NotPositiveError;
+
+    fn try_from(value: IStep) -> Result<Self, Self::Error> {
+        match value.0 >= 0 {
+            true => Ok(Self(value.0.try_into().unwrap())),
+            false => Err(NotPositiveError), 
+        }
+    }
+}
+
+impl From::<UStepNonZero> for IStepNonZero {
+    fn from(value: UStepNonZero) -> Self {
+        Self(value.0.try_into().unwrap());
+        todo!()
+    }
+}
+
+impl TryFrom::<IStepNonZero> for UStepNonZero {
+    type Error = NotPositiveError;
+
+    fn try_from(value: IStepNonZero) -> Result<Self, Self::Error> {
+        match value.0 >= 0 {
+            true => Ok(Self(value.0.try_into().unwrap())),
+            false => Err(NotPositiveError), 
         }
     }
 }
