@@ -8,6 +8,36 @@ pub enum NoteSymbol {
     Natural,
 }
 
+#[macro_export]
+macro_rules! sharp {
+    ($l:expr) => {{
+        use $crate::note::relative::symbol::NoteSymbol;
+        use $crate::ustep_non_zero;
+        NoteSymbol::Sharp(ustep_non_zero!($l))
+    }};
+
+    () => {{
+        use $crate::note::relative::symbol::NoteSymbol;
+        use $crate::ustep_non_zero;
+        NoteSymbol::Sharp(ustep_non_zero!(1))
+    }};
+}
+
+#[macro_export]
+macro_rules! flat {
+    ($l:expr) => {{
+        use $crate::note::relative::symbol::NoteSymbol;
+        use $crate::ustep_non_zero;
+        NoteSymbol::Flat(ustep_non_zero!($l))
+    }};
+
+    () => {{
+        use $crate::note::relative::symbol::NoteSymbol;
+        use $crate::ustep_non_zero;
+        NoteSymbol::Flat(ustep_non_zero!(1))
+    }};
+}
+
 impl From<NoteSymbol> for IStep {
     fn from(value: NoteSymbol) -> Self {
         match value {
