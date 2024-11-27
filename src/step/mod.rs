@@ -1,3 +1,5 @@
+use std::ops::Neg;
+
 #[derive(Debug, PartialEq, Clone, Copy)] pub struct UStep(u8);
 #[derive(Debug, PartialEq, Clone, Copy)] pub struct IStep(i8);
 #[derive(Debug, PartialEq, Clone, Copy)] pub struct UStepNonZero(u8);
@@ -131,5 +133,21 @@ impl From::<UStepNonZero> for u8 {
 impl From::<IStepNonZero> for i8 {
     fn from(value: IStepNonZero) -> Self {
         value.0
+    }
+}
+
+impl Neg for IStep {
+    type Output = Self;
+
+    fn neg(self) -> Self::Output {
+        Self(-self.0)
+    }
+}
+
+impl Neg for IStepNonZero {
+    type Output = Self;
+
+    fn neg(self) -> Self::Output {
+        Self(-self.0)
     }
 }
