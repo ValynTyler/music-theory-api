@@ -78,10 +78,27 @@ impl Display for RelativeNote {
     }
 }
 
+struct AbsoluteNote(NotePitch);
+
+impl From<RelativeNote> for AbsoluteNote {
+    fn from(value: RelativeNote) -> Self {
+        let letter_value: NotePitch = value.letter.into();
+        let letter_value: i8 = letter_value.0 as i8;
+        let symbol_value: i8 = match value.symbol {
+            NoteSymbol::Flat(note_shift) => -(note_shift.0 as i8),
+            NoteSymbol::Sharp(note_shift) => note_shift.0 as i8,
+            NoteSymbol::Natural => 0,
+        };
+        let result = (24 + letter_value + symbol_value) % 12;
+        Self(NotePitch(result as u8))
+    }
+}
+
 fn main() {
     let note = RelativeNote {
-        letter: NoteLetter::G,
-        symbol: NoteSymbol::Sharp(1.try_into().unwrap()),
+        letter: NoteLetter::B,
+        symbol: NoteSymbol::Flat(1.try_into().unwrap()),
     };
     println!("{}", note);
+    println!("{}", AbsoluteNote::from(note).0.0);
 }
