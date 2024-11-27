@@ -8,6 +8,22 @@ use std::ops::Neg;
 #[derive(Debug, PartialEq, Clone, Copy)] pub struct NotNonZeroError;
 #[derive(Debug, PartialEq, Clone, Copy)] pub struct NotPositiveError;
 
+#[macro_export]
+macro_rules! ustep {
+    ($l:expr) => {{
+        use $crate::step::UStep;
+        UStep::from($l)
+    }};
+}
+
+#[macro_export]
+macro_rules! istep {
+    ($l:expr) => {{
+        use $crate::step::IStep;
+        IStep::from($l)
+    }};
+}
+
 impl UStep {
     pub const MAX: Self = Self(11);
     pub const MIN: Self = Self(0);
