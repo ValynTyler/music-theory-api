@@ -77,3 +77,15 @@ impl TryFrom::<IStepNonZero> for UStepNonZero {
         }
     }
 }
+
+impl From::<UStepNonZero> for UStep {
+    fn from(value: UStepNonZero) -> Self {
+        Self(value.0)
+    }
+}
+
+impl From::<IStepNonZero> for IStep {
+    fn from(value: IStepNonZero) -> Self {
+        Self(value.0)
+    }
+}
