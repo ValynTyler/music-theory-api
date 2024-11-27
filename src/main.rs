@@ -1,9 +1,10 @@
-use music_theory_api::{note::relative::{letter::NoteLetter, symbol::NoteSymbol, RelativeNote}, step::UStepNonZero};
+use music_theory_api::{note::{absolute::AbsoluteNote, relative::{letter::NoteLetter, symbol::NoteSymbol, RelativeNote}}, step::UStepNonZero};
 
 fn main() {
     let note = RelativeNote {
-        letter: NoteLetter::A,
-        symbol: NoteSymbol::Flat(UStepNonZero::try_from(3).unwrap()),
+        letter: NoteLetter::C,
+        symbol: NoteSymbol::Flat(UStepNonZero::try_from(1).unwrap()),
     };
     println!("{}", note);
+    println!("{}", AbsoluteNote::from(note));
 }
