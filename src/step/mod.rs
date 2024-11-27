@@ -3,8 +3,8 @@
 #[derive(Clone, Copy)] pub struct UStepNonZero(u8);
 #[derive(Clone, Copy)] pub struct IStepNonZero(i8);
 
-pub struct NotNonZeroError;
-pub struct NotPositiveError;
+#[derive(Debug)] pub struct NotNonZeroError;
+#[derive(Debug)] pub struct NotPositiveError;
 
 impl From::<u8> for UStep {
     fn from(value: u8) -> Self {
