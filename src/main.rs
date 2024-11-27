@@ -25,10 +25,11 @@ enum NoteLetter {
 }
 
 enum NoteSymbol {
-    Flat(NotePitch),
+    Flat(NotePitch), // TODO doesnt make sense to represent `Flat(0)`
     Sharp(NotePitch),
     Natural,
 }
+
 
 fn main() {
     println!("{}", -13 % 122);
