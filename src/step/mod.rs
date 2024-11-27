@@ -1,7 +1,7 @@
-pub struct UStep(u8);
-pub struct IStep(i8);
-pub struct UStepNonZero(u8);
-pub struct IStepNonZero(i8);
+#[derive(Clone, Copy)] pub struct UStep(u8);
+#[derive(Clone, Copy)] pub struct IStep(i8);
+#[derive(Clone, Copy)] pub struct UStepNonZero(u8);
+#[derive(Clone, Copy)] pub struct IStepNonZero(i8);
 
 pub struct NotNonZeroError;
 pub struct NotPositiveError;
@@ -87,5 +87,29 @@ impl From::<UStepNonZero> for UStep {
 impl From::<IStepNonZero> for IStep {
     fn from(value: IStepNonZero) -> Self {
         Self(value.0)
+    }
+}
+
+impl From::<UStep> for u8 {
+    fn from(value: UStep) -> Self {
+        value.0
+    }
+}
+
+impl From::<IStep> for i8 {
+    fn from(value: IStep) -> Self {
+        value.0
+    }
+}
+
+impl From::<UStepNonZero> for u8 {
+    fn from(value: UStepNonZero) -> Self {
+        value.0
+    }
+}
+
+impl From::<IStepNonZero> for i8 {
+    fn from(value: IStepNonZero) -> Self {
+        value.0
     }
 }
