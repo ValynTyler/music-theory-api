@@ -1,5 +1,8 @@
+use std::fmt::Display;
+
 use crate::step::UStep;
 
+#[derive(Debug)]
 pub enum NoteLetter {
     C,
     D,
@@ -22,4 +25,10 @@ impl From::<NoteLetter> for UStep {
             NoteLetter::B => UStep::from(11),
         }
     }
-} 
+}
+
+impl Display for NoteLetter {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:?}", self)
+    }
+}
