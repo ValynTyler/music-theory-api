@@ -1,5 +1,6 @@
 use crate::step::UStep;
 
+#[derive(Debug)]
 pub struct AbsoluteNote(UStep);
 
 impl From::<UStep> for AbsoluteNote {
