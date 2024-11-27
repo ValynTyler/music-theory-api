@@ -1,27 +1,13 @@
-use std::fmt::Display;
-
-#[derive(Debug)]
-enum NoteLetter {
-    A, B, C, D, E, F, G
+pub struct AbsoluteNote {
+    pitch: u8, // between 8 and 127
 }
 
-impl Display for NoteLetter {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{:?}", self)
-    }
-}
-
-#[derive(Debug)]
-enum NoteSymbol {
-    Sharp(u8), Flat(u8)
-}
-
-#[derive(Debug)]
-struct Note {
-    letter: NoteLetter,
-    symbol: NoteSymbol,
+pub struct RelativeNote {
+    base: u8,           // between 0 and 11
+    symbol: i8,         // any value
+    pitch_class: u8,    // between 0 and 9
+                        // converted absolute value will be between 0 and 9 * 12 + 11 (119)
 }
 
 fn main() {
-    println!("{:?}", Note { letter: NoteLetter::A, symbol: NoteSymbol::Sharp(1) });
 }
