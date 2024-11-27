@@ -7,23 +7,23 @@
 #[derive(Debug)] pub struct NotPositiveError;
 
 impl UStep {
-    const MAX: Self = Self(11);
-    const MIN: Self = Self(0);
+    pub const MAX: Self = Self(11);
+    pub const MIN: Self = Self(0);
 }
 
 impl IStep {
-    const MAX: Self = Self(11);
-    const MIN: Self = Self(-11);
+    pub const MAX: Self = Self(11);
+    pub const MIN: Self = Self(-11);
 }
 
 impl UStepNonZero {
-    const MAX: Self = Self(11);
-    const MIN: Self = Self(0);
+    pub const MAX: Self = Self(11);
+    pub const MIN: Self = Self(0);
 }
 
 impl IStepNonZero {
-    const MAX: Self = Self(11);
-    const MIN: Self = Self(-11);
+    pub const MAX: Self = Self(11);
+    pub const MIN: Self = Self(-11);
 }
 
 impl From::<u8> for UStep {
