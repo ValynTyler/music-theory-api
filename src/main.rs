@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 struct NotePitch(u8); // between 0 and 11
 
 impl From::<u8> for NotePitch {
@@ -21,6 +23,7 @@ impl From<NoteLetter> for NotePitch {
 }
 
 struct NoteShift(u8);
+#[derive(Debug)]
 struct ZeroShiftError;
 
 impl TryFrom::<u8> for NoteShift {
@@ -34,6 +37,7 @@ impl TryFrom::<u8> for NoteShift {
     }
 }
 
+#[derive(Debug)]
 enum NoteLetter {
     A, B, C, D, E, F, G
 }
@@ -44,6 +48,40 @@ enum NoteSymbol {
     Natural,
 }
 
+impl Display for NoteSymbol {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            NoteSymbol::Sharp(note_shift) => {
+                for _ in 0..note_shift.0 {
+                    write!(f, "♯")? // TODO implement double sharp(𝄪) display
+                }
+            }
+            NoteSymbol::Flat(note_shift) => {
+                for _ in 0..note_shift.0 {
+                    write!(f, "♭")?
+                }
+            },
+            NoteSymbol::Natural => write!(f, "♮")?,
+        };
+        Ok(())
+    }
+}
+
+struct Note {
+    letter: NoteLetter,
+    symbol: NoteSymbol,
+}
+
+impl Display for Note {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:?}{}", self.letter, self.symbol)
+    }
+}
+
 fn main() {
-    println!("{}", -13 % 122);
+    let note = Note {
+        letter: NoteLetter::G,
+        symbol: NoteSymbol::Sharp(1.try_into().unwrap()),
+    };
+    println!("{}", note);
 }
