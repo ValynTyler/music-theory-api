@@ -66,8 +66,7 @@ impl TryFrom::<i8> for IStepNonZero {
 
 impl From::<UStep> for IStep {
     fn from(value: UStep) -> Self {
-        Self(value.0.try_into().unwrap());
-        todo!()
+        Self(value.0.try_into().unwrap())
     }
 }
 
@@ -84,8 +83,7 @@ impl TryFrom::<IStep> for UStep {
 
 impl From::<UStepNonZero> for IStepNonZero {
     fn from(value: UStepNonZero) -> Self {
-        Self(value.0.try_into().unwrap());
-        todo!()
+        Self(value.0.try_into().unwrap())
     }
 }
 
