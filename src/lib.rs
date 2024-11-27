@@ -1,3 +1,2 @@
 pub mod note;
-pub mod pitch;
-pub mod symbol;
+pub mod notation;

@@ -1,5 +1,5 @@
-use music_theory_api::pitch::Solfege;
+use music_theory_api::notation::{note::{Letter, Solfege}, symbol::Symbol};
 
 fn main() {
-    println!("{:?}", Solfege::Do);
+    println!("{:?}{}", Letter::from(Solfege::Si), Symbol::Flat);
 }
