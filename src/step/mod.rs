@@ -1,7 +1,7 @@
-#[derive(Clone, Copy)] pub struct UStep(u8);
-#[derive(Clone, Copy)] pub struct IStep(i8);
-#[derive(Clone, Copy)] pub struct UStepNonZero(u8);
-#[derive(Clone, Copy)] pub struct IStepNonZero(i8);
+#[derive(Debug, PartialEq, Clone, Copy)] pub struct UStep(u8);
+#[derive(Debug, PartialEq, Clone, Copy)] pub struct IStep(i8);
+#[derive(Debug, PartialEq, Clone, Copy)] pub struct UStepNonZero(u8);
+#[derive(Debug, PartialEq, Clone, Copy)] pub struct IStepNonZero(i8);
 
 #[derive(Debug)] pub struct NotNonZeroError;
 #[derive(Debug)] pub struct NotPositiveError;
