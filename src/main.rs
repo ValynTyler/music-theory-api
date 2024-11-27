@@ -2,8 +2,8 @@ use music_theory_api::{note::relative::{letter::NoteLetter, symbol::NoteSymbol, 
 
 fn main() {
     let note = RelativeNote {
-        letter: NoteLetter::C,
-        symbol: NoteSymbol::Natural,
+        letter: NoteLetter::A,
+        symbol: NoteSymbol::Flat(UStepNonZero::try_from(3).unwrap()),
     };
-    println!("{}", NoteSymbol::Flat(UStepNonZero::try_from(7).unwrap()));
+    println!("{}", note);
 }
