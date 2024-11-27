@@ -20,16 +20,28 @@ impl From<NoteLetter> for NotePitch {
     }
 }
 
+struct NoteShift(u8);
+
+impl TryFrom::<u8> for NoteShift {
+    type Error = String;
+
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        match value % 12 {
+            0 => Err("Must pass non-null integer".to_owned()),
+            _ => Ok(Self(value % 12))
+        }
+    }
+}
+
 enum NoteLetter {
     A, B, C, D, E, F, G
 }
 
 enum NoteSymbol {
-    Flat(NotePitch), // TODO doesnt make sense to represent `Flat(0)`
-    Sharp(NotePitch),
+    Flat(NoteShift),
+    Sharp(NoteShift),
     Natural,
 }
-
 
 fn main() {
     println!("{}", -13 % 122);
