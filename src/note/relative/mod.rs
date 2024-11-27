@@ -5,6 +5,6 @@ pub mod letter;
 pub mod symbol;
 
 pub struct RelativeNote {
-    letter: NoteLetter,
-    symbol: NoteSymbol,
+    pub letter: NoteLetter,
+    pub symbol: NoteSymbol,
 }
