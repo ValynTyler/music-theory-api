@@ -1,4 +1,4 @@
-use music_theory_api::{note::{absolute::AbsoluteNote, relative::{letter::NoteLetter, symbol::NoteSymbol, RelativeNote}}, step::UStepNonZero};
+use music_theory_api::{istep, note::{absolute::AbsoluteNote, relative::{letter::NoteLetter, symbol::NoteSymbol, RelativeNote}}, step::UStepNonZero, ustep};
 
 fn main() {
     let note = RelativeNote {
@@ -7,4 +7,7 @@ fn main() {
     };
     println!("{}", note);
     println!("{}", AbsoluteNote::from(note));
+
+    println!("{:?}", ustep!(2));
+    println!("{:?}", istep!(2));
 }
