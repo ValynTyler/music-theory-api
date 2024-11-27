@@ -3,8 +3,8 @@
 #[derive(Debug, PartialEq, Clone, Copy)] pub struct UStepNonZero(u8);
 #[derive(Debug, PartialEq, Clone, Copy)] pub struct IStepNonZero(i8);
 
-#[derive(Debug)] pub struct NotNonZeroError;
-#[derive(Debug)] pub struct NotPositiveError;
+#[derive(Debug, PartialEq, Clone, Copy)] pub struct NotNonZeroError;
+#[derive(Debug, PartialEq, Clone, Copy)] pub struct NotPositiveError;
 
 impl UStep {
     pub const MAX: Self = Self(11);
