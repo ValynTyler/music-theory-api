@@ -24,6 +24,23 @@ macro_rules! istep {
     }};
 }
 
+#[macro_export]
+macro_rules! ustep_non_zero {
+    ($l:expr) => {{
+        use $crate::step::UStepNonZero;
+        UStepNonZero::try_from($l).unwrap()
+    }};
+}
+
+
+#[macro_export]
+macro_rules! istep_non_zero {
+    ($l:expr) => {{
+        use $crate::step::IStepNonZero;
+        IStepNonZero::try_from($l).unwrap()
+    }};
+}
+
 impl UStep {
     pub const MAX: Self = Self(11);
     pub const MIN: Self = Self(0);
