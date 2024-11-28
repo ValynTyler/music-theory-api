@@ -2,7 +2,7 @@ use std::fmt::Display;
 
 use crate::step::UStep;
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum NoteLetter {
     C,
     D,

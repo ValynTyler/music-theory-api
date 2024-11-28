@@ -1,15 +1,13 @@
 use std::fmt::Display;
-
 use letter::NoteLetter;
 use symbol::NoteSymbol;
-
 use crate::step::{IStep, UStep};
-
 use super::absolute::AbsoluteNote;
 
 pub mod letter;
 pub mod symbol;
 
+#[derive(Clone, Copy)]
 pub struct RelativeNote {
     pub letter: NoteLetter,
     pub symbol: NoteSymbol,

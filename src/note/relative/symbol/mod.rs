@@ -2,6 +2,7 @@ use std::fmt::Display;
 
 use crate::step::{IStep, UStep, UStepNonZero};
 
+#[derive(Clone, Copy)]
 pub enum NoteSymbol {
     Sharp(UStepNonZero),
     Flat(UStepNonZero),
