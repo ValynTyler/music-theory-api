@@ -10,52 +10,39 @@ pub enum NoteSymbol {
 
 #[macro_export]
 macro_rules! sharp {
-    ($l:expr) => {{
+    ($value:literal) => {{
         use $crate::note::relative::symbol::NoteSymbol;
-        use $crate::ustep_non_zero;
-        NoteSymbol::Sharp(ustep_non_zero!($l))
+        use $crate::step::UStepNonZero;
+        NoteSymbol::Sharp(UStepNonZero::try_from(u8::try_from($value).unwrap()).unwrap())
     }};
 
-    () => {{
-        use $crate::note::relative::symbol::NoteSymbol;
-        use $crate::ustep_non_zero;
-        NoteSymbol::Sharp(ustep_non_zero!(1))
-    }};
+    () => { sharp!(1) };
 }
 
 #[macro_export]
 macro_rules! flat {
-    ($l:expr) => {{
+    ($value:literal) => {{
         use $crate::note::relative::symbol::NoteSymbol;
-        use $crate::ustep_non_zero;
-        NoteSymbol::Flat(ustep_non_zero!($l))
+        use $crate::step::UStepNonZero;
+        NoteSymbol::Flat(UStepNonZero::try_from(u8::try_from($value).unwrap()).unwrap())
     }};
 
-    () => {{
-        use $crate::note::relative::symbol::NoteSymbol;
-        use $crate::ustep_non_zero;
-        NoteSymbol::Flat(ustep_non_zero!(1))
-    }};
+    () => { flat!(1) };
 }
 
 #[macro_export]
 macro_rules! symbol {
-    ($l:literal) => {{
+    ($value:literal) => {{
         use $crate::note::relative::symbol::NoteSymbol;
-        use $crate::ustep_non_zero;
-
-        let val: i8 = $l;
-        match val {
+        use $crate::step::UStepNonZero;
+        match $value {
             0   => NoteSymbol::Natural,
-            1.. => NoteSymbol::Sharp(ustep_non_zero!(val as u8)),
-            _   => NoteSymbol::Flat(ustep_non_zero!(-val as u8)),
+            1.. => NoteSymbol::Sharp(UStepNonZero::try_from(u8::try_from($value).unwrap()).unwrap()),
+            _   => NoteSymbol::Flat(UStepNonZero::try_from(u8::try_from(-$value).unwrap()).unwrap()),
         }
     }};
 
-    () => {{
-        use $crate::note::relative::symbol::NoteSymbol;
-        NoteSymbol::Natural
-    }};
+    () => { symbol!(0) };
 }
 
 impl From<NoteSymbol> for IStep {
