@@ -11,7 +11,7 @@ pub enum NoteSymbol {
 
 #[macro_export]
 macro_rules! sharp {
-    ($value:literal) => {{
+    ($value:expr) => {{
         use $crate::note::relative::symbol::NoteSymbol;
         use $crate::step::UStepNonZero;
         NoteSymbol::Sharp(UStepNonZero::try_from(u8::try_from($value).unwrap()).unwrap())
@@ -22,7 +22,7 @@ macro_rules! sharp {
 
 #[macro_export]
 macro_rules! flat {
-    ($value:literal) => {{
+    ($value:expr) => {{
         use $crate::note::relative::symbol::NoteSymbol;
         use $crate::step::UStepNonZero;
         NoteSymbol::Flat(UStepNonZero::try_from(u8::try_from($value).unwrap()).unwrap())
@@ -33,7 +33,7 @@ macro_rules! flat {
 
 #[macro_export]
 macro_rules! symbol {
-    ($value:literal) => {{
+    ($value:expr) => {{
         use $crate::note::relative::symbol::NoteSymbol;
         use $crate::step::UStepNonZero;
         match $value {
