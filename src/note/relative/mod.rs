@@ -15,7 +15,7 @@ pub struct RelativeNote {
 
 impl Display for RelativeNote {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}{}", self.letter, self.symbol)
+        f.pad(&format!("{}{}", self.letter, self.symbol))
     }
 }
 
