@@ -1,5 +1,38 @@
 use music_theory_api::{note::{absolute::AbsoluteNote, relative::{letter::NoteLetter, RelativeNote}}, sharp, symbol};
 
+macro_rules! count_symbols {
+    () => {
+        0
+    };
+
+    (# $($rest:tt)*) => {
+        count_symbols!($($rest)*) + 1
+    };
+
+    (b $($rest:tt)*) => {
+        count_symbols!($($rest)*) - 1
+    };
+}
+
+macro_rules! note_letter {
+    (C) => { NoteLetter::C };
+    (D) => { NoteLetter::D };
+    (E) => { NoteLetter::E };
+    (F) => { NoteLetter::F };
+    (G) => { NoteLetter::G };
+    (A) => { NoteLetter::A };
+    (B) => { NoteLetter::B };
+}
+
+macro_rules! note {
+    ($letter:ident $($symbols:tt)*) => {
+        RelativeNote {
+            letter: note_letter!($letter),
+            symbol: symbol!(count_symbols!($($symbols)*)),
+        }
+    };
+}
+
 fn main() {
     let scale = vec![
         RelativeNote { letter: NoteLetter::C, symbol: symbol!() },
@@ -35,4 +68,7 @@ fn main() {
         println!("{:<2} {}", note.to_string(), AbsoluteNote::from(note))
     }
     println!();
+
+    let jeff = note!(G b b);
+    println!("{}", jeff);
 }
