@@ -1,9 +1,9 @@
-use music_theory_api::{istep, note::{absolute::AbsoluteNote, relative::{letter::NoteLetter, RelativeNote}}, sharp, ustep};
+use music_theory_api::{istep, note::{absolute::AbsoluteNote, relative::{letter::NoteLetter, RelativeNote}}, sharp, symbol, ustep};
 
 fn main() {
     let note = RelativeNote {
         letter: NoteLetter::B,
-        symbol: sharp!(),
+        symbol: symbol!(2),
     };
     println!("{}", note);
     println!("{}", AbsoluteNote::from(note));

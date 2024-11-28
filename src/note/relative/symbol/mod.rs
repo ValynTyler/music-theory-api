@@ -38,6 +38,26 @@ macro_rules! flat {
     }};
 }
 
+#[macro_export]
+macro_rules! symbol {
+    ($l:literal) => {{
+        use $crate::note::relative::symbol::NoteSymbol;
+        use $crate::ustep_non_zero;
+
+        let val: i8 = $l;
+        match val {
+            0   => NoteSymbol::Natural,
+            1.. => NoteSymbol::Sharp(ustep_non_zero!(val as u8)),
+            _   => NoteSymbol::Flat(ustep_non_zero!(-val as u8)),
+        }
+    }};
+
+    () => {{
+        use $crate::note::relative::symbol::NoteSymbol;
+        NoteSymbol::Natural
+    }};
+}
+
 impl From<NoteSymbol> for IStep {
     fn from(value: NoteSymbol) -> Self {
         match value {
